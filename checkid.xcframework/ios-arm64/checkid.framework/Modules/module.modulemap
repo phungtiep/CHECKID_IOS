@@ -1,0 +1,11 @@
+framework module checkid {
+  umbrella header "checkid.h"
+
+  export *
+  module * { export * }
+}
+
+module checkid.Swift {
+    header "checkid-Swift.h"
+    requires objc
+}

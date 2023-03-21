@@ -1,0 +1,2011 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name checkid
+import AVFoundation
+import AudioToolbox
+import Combine
+import CommonCrypto
+import CoreGraphics
+import CoreMedia
+import CoreNFC
+import CoreVideo
+import CryptoKit
+import CryptoSwift
+import CryptoTokenKit
+import Foundation
+import LocalAuthentication
+import MLImage
+import MLKitFaceDetection
+import MLKitVision
+import Network
+import OpenSSL
+import Photos
+import SQLite3
+import Swift
+import SwiftUI
+import SwiftyJSON
+import SwiftyRSA
+import SwiftyTesseract
+import SystemConfiguration
+import UIKit
+import Vision
+import _Concurrency
+@_exported import checkid
+extension UIKit.UIImage {
+  public func scaledImage(with size: CoreGraphics.CGSize) -> UIKit.UIImage?
+}
+@_hasMissingDesignatedInitializers public class Reachability {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, *)
+public class TagReader {
+  @objc deinit
+}
+extension checkid.PKCS7_ {
+  public struct ReceiptInfo {
+    public var bundleIdentifier: Swift.String? {
+      get
+    }
+    public var bundleIdentifierData: Foundation.Data? {
+      get
+    }
+    public var bundleVersion: Swift.String? {
+      get
+    }
+    public var originalApplicationVersion: Swift.String? {
+      get
+    }
+    public var opaqueValue: Foundation.Data? {
+      get
+    }
+    public var sha1: Foundation.Data? {
+      get
+    }
+    public var receiptCreationDate: Foundation.Date? {
+      get
+    }
+    public var receiptCreationDateString: Swift.String? {
+      get
+    }
+    public var receiptExpirationDate: Foundation.Date? {
+      get
+    }
+    public var receiptExpirationDateString: Swift.String? {
+      get
+    }
+    public var inAppPurchases: [checkid.PKCS7_.InAppPurchaseInfo]? {
+      get
+    }
+  }
+  public struct InAppPurchaseInfo {
+    public var quantity: Swift.UInt64? {
+      get
+    }
+    public var productId: Swift.String? {
+      get
+    }
+    public var transactionId: Swift.String? {
+      get
+    }
+    public var originalTransactionId: Swift.String? {
+      get
+    }
+    public var purchaseDate: Foundation.Date? {
+      get
+    }
+    public var originalPurchaseDate: Foundation.Date? {
+      get
+    }
+    public var expiresDate: Foundation.Date? {
+      get
+    }
+    public var isInIntroOfferPeriod: Swift.UInt64? {
+      get
+    }
+    public var cancellationDate: Foundation.Date? {
+      get
+    }
+    public var webOrderLineItemId: Swift.UInt64? {
+      get
+    }
+  }
+  public func receipt() -> checkid.PKCS7_.ReceiptInfo?
+}
+public enum MobileIDNFCResult : Swift.Error {
+  case NFC_OK
+  case NFC_CARD_VALIDATE_FAILED
+  case NFC_FAILED
+  case NFC_CARD_ACCESS_DENIED
+  case NFC_ADAPTER_NOT_SUPPORTED
+  public static func == (a: checkid.MobileIDNFCResult, b: checkid.MobileIDNFCResult) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class MobileIDNFCInfo {
+  public var docNo: Swift.String?
+  public var dg1: Swift.String?
+  public var dg2: Swift.String?
+  public var dg13: Swift.String?
+  public var dg14: Swift.String?
+  public var dg15: Swift.String?
+  public var efCom: Swift.String?
+  public var efCardAccess: Swift.String?
+  public var efSOD: Swift.String?
+  public func toPlainText() -> Swift.String
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public enum NFCViewDisplayMessage {
+  case requestPresentPassport
+  case authenticatingWithPassport(Swift.Int)
+  case readingDataGroupProgress(checkid.DataGroupId, Swift.Int)
+  case error(checkid.NFCPassportReaderError)
+  case successfulRead
+}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.NFCViewDisplayMessage {
+  public var description: Swift.String {
+    get
+  }
+}
+public struct CharSet {
+  public typealias Ndx = Swift.UInt8
+  public typealias NdxFn = ([Swift.UInt8], Swift.Int, Swift.UInt8) -> checkid.CharSet.Ndx
+  public static let charset64: checkid.CharSet
+  public static let charset32: checkid.CharSet
+  public static let charset16: checkid.CharSet
+  public static let charset8: checkid.CharSet
+  public static let charset4: checkid.CharSet
+  public static let charset2: checkid.CharSet
+  public var chars: Swift.String {
+    get
+  }
+  public let bitsPerChar: Swift.UInt8
+  public init(_ chars: Swift.String) throws
+  public func bytesNeeded(bits: Swift.Float) -> Swift.Int
+}
+@_hasMissingDesignatedInitializers public class CheckIdCommons {
+  public static func setLicense(licenseString: Swift.String, onCompletion: @escaping (Swift.Result<Swift.Bool, checkid.LicenseError>) -> Swift.Void)
+  public static func setLanguage(language: Swift.String)
+  @objc deinit
+}
+extension Foundation.Data {
+  public static func fromBase64(_ encoded: Swift.String) -> Foundation.Data?
+}
+extension Swift.String {
+  public static func fromBase64(_ encoded: Swift.String) throws -> Swift.String?
+}
+@_hasMissingDesignatedInitializers public class X509PublicKey {
+  public var algOid: Swift.String? {
+    get
+  }
+  public var algName: Swift.String? {
+    get
+  }
+  public var algParams: Swift.String? {
+    get
+  }
+  public var derEncodedKey: Foundation.Data? {
+    get
+  }
+  public var key: Foundation.Data? {
+    get
+  }
+  @objc deinit
+}
+public enum PACEMappingType {
+  case GM
+  case IM
+  case CAM
+  public static func == (a: checkid.PACEMappingType, b: checkid.PACEMappingType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class PACEInfo : checkid.SecurityInfo {
+  public static let PARAM_ID_GFP_1024_160: Swift.Int
+  public static let PARAM_ID_GFP_2048_224: Swift.Int
+  public static let PARAM_ID_GFP_2048_256: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P192_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P192_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P224_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P224_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P256_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P256_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P320_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P384_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P384_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P512_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P521_R1: Swift.Int
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getVersion() -> Swift.Int
+  public func getParameterId() -> Swift.Int?
+  public func getParameterSpec() throws -> Swift.Int32
+  public func getMappingType() throws -> checkid.PACEMappingType
+  public func getKeyAgreementAlgorithm() throws -> Swift.String
+  public func getCipherAlgorithm() throws -> Swift.String
+  public func getDigestAlgorithm() throws -> Swift.String
+  public func getKeyLength() throws -> Swift.Int
+  public func createMappingKey() throws -> Swift.OpaquePointer
+  public static func getParameterSpec(stdDomainParam: Swift.Int) throws -> Swift.Int32
+  public static func toMappingType(oid: Swift.String) throws -> checkid.PACEMappingType
+  public static func toKeyAgreementAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toCipherAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toDigestAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toKeyLength(oid: Swift.String) throws -> Swift.Int
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public struct DataGroupHash {
+  public var id: Swift.String
+  public var sodHash: Swift.String
+  public var computedHash: Swift.String
+  public var match: Swift.Bool
+}
+public enum DetectionType {
+  case PASSIVE
+  case PASSIVE_WITH_BLINK
+  case NOSE_ACTIVE
+  case NOSE_ACTIVE_WITH_BLINK
+  public static func == (a: checkid.DetectionType, b: checkid.DetectionType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class COM : checkid.DataGroup {
+  public var version: Swift.String {
+    get
+  }
+  public var unicodeVersion: Swift.String {
+    get
+  }
+  public var dataGroupsPresent: [Swift.String] {
+    get
+  }
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public enum NFCPassportReaderError : Swift.Error {
+  case ResponseError(Swift.String, Swift.UInt8, Swift.UInt8)
+  case InvalidResponse
+  case UnexpectedError
+  case NFCNotSupported
+  case NoConnectedTag
+  case D087Malformed
+  case InvalidResponseChecksum
+  case MissingMandatoryFields
+  case CannotDecodeASN1Length
+  case InvalidASN1Value
+  case UnableToProtectAPDU
+  case UnableToUnprotectAPDU
+  case UnsupportedDataGroup
+  case DataGroupNotRead
+  case UnknownTag
+  case UnknownImageFormat
+  case NotImplemented
+  case TagNotValid
+  case ConnectionError
+  case UserCanceled
+  case InvalidMRZKey
+  case MoreThanOneTagFound
+  case InvalidHashAlgorithmSpecified
+  case InvalidDataPassed(Swift.String)
+  case NotYetSupported(Swift.String)
+}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.NFCPassportReaderError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public enum OpenSSLError : Swift.Error {
+  case UnableToGetX509CertificateFromPKCS7(Swift.String)
+  case UnableToVerifyX509CertificateForSOD(Swift.String)
+  case VerifyAndReturnSODEncapsulatedData(Swift.String)
+  case UnableToReadECPublicKey(Swift.String)
+  case UnableToExtractSignedDataFromPKCS7(Swift.String)
+  case VerifySignedAttributes(Swift.String)
+  case UnableToParseASN1(Swift.String)
+  case UnableToDecryptRSASignature(Swift.String)
+}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.OpenSSLError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public enum PassiveAuthenticationError : Swift.Error {
+  case UnableToParseSODHashes(Swift.String)
+  case InvalidDataGroupHash(Swift.String)
+  case SODMissing(Swift.String)
+}
+extension checkid.PassiveAuthenticationError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public class PKCS7_ {
+  final public let mainBlock: checkid.ASN1Object
+  public init(data: Foundation.Data) throws
+  public var digestAlgorithm: Swift.String? {
+    get
+  }
+  public var digestAlgorithmName: Swift.String? {
+    get
+  }
+  public var certificate: checkid.X509Certificate? {
+    get
+  }
+  public var certificates: [checkid.X509Certificate] {
+    get
+  }
+  public var data: Foundation.Data? {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class MBLiveness {
+  public static func startFaceScan(pKeyID: Swift.String, pKeyDob: Swift.String, pKeyDoe: Swift.String, baseUrlString: Swift.String, accessKeyString: Swift.String, secretKeyString: Swift.String, xApiKeyString: Swift.String, regionString: Swift.String, serviceNameString: Swift.String, usernameString: Swift.String, publicKey: Swift.String, card_no: Swift.String, faceSelfie: Swift.String, onCompletion: @escaping (Swift.Result<[Swift.String : Any], checkid.FaceException>) -> Swift.Void)
+  public static func startFaceAuthen(pKeyID: Swift.String, pKeyDob: Swift.String, pKeyDoe: Swift.String, baseUrlString: Swift.String, accessKeyString: Swift.String, secretKeyString: Swift.String, xApiKeyString: Swift.String, regionString: Swift.String, serviceNameString: Swift.String, usernameString: Swift.String, publicKey: Swift.String, card_no: Swift.String, faceSelfie: Swift.String, onCompletion: @escaping (Swift.Result<[Swift.String : Any], checkid.FaceException>) -> Swift.Void)
+  public static func startLiveness(pKeyID: Swift.String, pKeyDob: Swift.String, pKeyDoe: Swift.String, baseUrlString: Swift.String, accessKeyString: Swift.String, secretKeyString: Swift.String, xApiKeyString: Swift.String, regionString: Swift.String, serviceNameString: Swift.String, usernameString: Swift.String, publicKey: Swift.String, card_no: Swift.String, faceSelfie: Swift.String, onCompletion: @escaping (Swift.Result<[Swift.String : Any], checkid.FaceException>) -> Swift.Void)
+  @objc deinit
+}
+public struct LivenessResult : Swift.Codable {
+  public let liveness_threshold: Swift.Float
+  public let liveness_confidence: Swift.Float
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MatchingResult : Swift.Codable {
+  public let match_threshold: Swift.Float
+  public let match_confidence: Swift.Float
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct VerificationResult : Swift.Codable {
+  public let transaction_id: Swift.String
+  public let final_result: checkid.FinalResult
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct VerificationResultOther : Swift.Codable {
+  public let transaction_id: Swift.String
+  public let final_result: checkid.FinalResultOther
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Claim_sources : Swift.Codable {
+  public let JWT: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct FinalResult : Swift.Codable {
+  public let match_threshold: Swift.Float
+  public let match_confidence: Swift.Float
+  public let match_result: Swift.Bool
+  public let liveness: Swift.Bool
+  public let liveness_threshold: Swift.Float
+  public let liveness_confidence: Swift.Float
+  public let claim_sources: checkid.Claim_sources
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct FinalResultOther : Swift.Codable {
+  public let match_threshold: Swift.Float
+  public let match_confidence: Swift.Float
+  public let match_result: Swift.Bool
+  public let liveness: Swift.Bool
+  public let liveness_threshold: Swift.Float
+  public let liveness_confidence: Swift.Float
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct FaceForCustomResultSuccess : Swift.Codable {
+  public let status: Swift.Float
+  public let message: Swift.String
+  public let transaction_id: Swift.String
+  public let provider: Swift.String
+  public let verification_result: checkid.VerificationResult
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct FaceCustomResultLivenessFail : Swift.Codable {
+  public let status: Swift.Float
+  public let message: Swift.String
+  public let transaction_id: Swift.String
+  public let description: Swift.String
+  public let liveness_result: checkid.LivenessResult
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct FaceCustomResultMatchingFail : Swift.Codable {
+  public let status: Swift.Float
+  public let message: Swift.String
+  public let transaction_id: Swift.String
+  public let description: Swift.String
+  public let liveness_result: checkid.LivenessResult
+  public let matching_result: checkid.MatchingResult
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct FaceForLivenessCustomResult : Swift.Codable {
+  public let status: Swift.Float
+  public let message: Swift.String
+  public let transaction_id: Swift.String
+  public let provider: Swift.String
+  public let verification_result: checkid.VerificationResultOther
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum ScanError : Swift.Error {
+  case SCAN_FAIL
+  case SCAN_SUCCESS
+  case LICENSE_NOT_VALID
+  case NFC_FUNCTION_IS_NOT_ENABLED
+  public static func == (a: checkid.ScanError, b: checkid.ScanError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum NfcScanError : Swift.Error {
+  case NFC_CARD_VALIDATE_FAILED
+  case NFC_FAILED
+  case NFC_ADAPTER_NOT_SUPPORTED
+  case NFC_NO_MRZ_SCANNED
+  case NFC_SERVER_ERROR
+  case LICENSE_NOT_VALID
+  case NFC_CARD_ACCESS_DENIED
+  case USER_CANCELED
+  public static func == (a: checkid.NfcScanError, b: checkid.NfcScanError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum FaceError : Swift.Error {
+  case FACE_NETWORK_ERROR
+  case NO_NFC_SCANNED
+  case NOT_VALID_MRZ_AND_NFC_PROCESS
+  case FACE_CHECK_FAILED
+  case NO_PERSONAL_IDENTITY_FOUND_PLEASE_DO_PA_AUTHENTICATION_FIRST
+  case LIVENESS_FAILED
+  case FACE_MATCHING_FAIL
+  case LICENSE_NOT_VALID
+  case USER_CANCELED
+  case DEVICE_NOT_CONNECTED_TO_THE_INTERNET
+  case TOO_MUCH_RETRY
+  public static func == (a: checkid.FaceError, b: checkid.FaceError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum MobileIDScanSuccess : Swift.Error {
+  case SCAN_SUCCESS
+  public static func == (a: checkid.MobileIDScanSuccess, b: checkid.MobileIDScanSuccess) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class CheckIdICAO {
+  public static func startMrz(onCompletion: @escaping (Swift.Result<Swift.Bool, checkid.ScanError>) -> Swift.Void)
+  public static func startNfc(mobile_no: Swift.String, email: Swift.String, onCompletion: @escaping (Swift.Result<checkid.NFCInfo, checkid.NfcScanError>) -> Swift.Void)
+  public static func startFaceScan(nfcInfo: checkid.NFCInfo?, retrieveVideo: Swift.Bool, onCompletion: @escaping (Swift.Result<checkid.FaceScanInfo, checkid.FaceError>) -> Swift.Void)
+  public static func startFaceAuth(card_no: Swift.String, retrieveVideo: Swift.Bool, onCompletion: @escaping (Swift.Result<checkid.FaceAuthInfo, checkid.FaceError>) -> Swift.Void)
+  public static func startFaceLiveness(WithCardNo card_no: Swift.String = "", retrieveVideo: Swift.Bool, onCompletion: @escaping (Swift.Result<checkid.FaceLivenessInfo, checkid.FaceError>) -> Swift.Void)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class TestViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class RegisterConfig {
+  @objc deinit
+}
+@available(iOS 13, *)
+public class BACHandler {
+  public var ksenc: [Swift.UInt8]
+  public var ksmac: [Swift.UInt8]
+  public var kifd: [Swift.UInt8]
+  public init()
+  public init(tagReader: checkid.TagReader)
+  public func performBACAndGetSessionKeys(mrzKey: Swift.String, completed: @escaping (_ error: checkid.NFCPassportReaderError?) -> ())
+  public func sessionKeys(data: [Swift.UInt8]) throws -> ([Swift.UInt8], [Swift.UInt8], [Swift.UInt8])
+  @objc deinit
+}
+extension UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class SecurityInfo {
+  public func getObjectIdentifier() -> Swift.String
+  public func getProtocolOIDString() -> Swift.String
+  @objc deinit
+}
+@available(iOS 13, *)
+public struct ResponseAPDU {
+  public var data: [Swift.UInt8]
+  public var sw1: Swift.UInt8
+  public var sw2: Swift.UInt8
+  public init(data: [Swift.UInt8], sw1: Swift.UInt8, sw2: Swift.UInt8)
+}
+extension checkid.KeychainWrapper {
+  public func remove(forKey key: checkid.KeychainWrapper.Key)
+}
+extension checkid.KeychainWrapper {
+  public subscript(key: checkid.KeychainWrapper.Key) -> Swift.String? {
+    get
+    set
+  }
+  public subscript(key: checkid.KeychainWrapper.Key) -> Swift.Bool? {
+    get
+    set
+  }
+  public subscript(key: checkid.KeychainWrapper.Key) -> Swift.Int? {
+    get
+    set
+  }
+  public subscript(key: checkid.KeychainWrapper.Key) -> Swift.Double? {
+    get
+    set
+  }
+  public subscript(key: checkid.KeychainWrapper.Key) -> Swift.Float? {
+    get
+    set
+  }
+  public subscript(key: checkid.KeychainWrapper.Key) -> CoreGraphics.CGFloat? {
+    get
+    set
+  }
+  public subscript(key: checkid.KeychainWrapper.Key) -> Foundation.Data? {
+    get
+    set
+  }
+}
+extension checkid.KeychainWrapper {
+  public func data(forKey key: checkid.KeychainWrapper.Key) -> Foundation.Data?
+  public func bool(forKey key: checkid.KeychainWrapper.Key) -> Swift.Bool?
+  public func integer(forKey key: checkid.KeychainWrapper.Key) -> Swift.Int?
+  public func float(forKey key: checkid.KeychainWrapper.Key) -> Swift.Float?
+  public func cgFloat(forKey key: checkid.KeychainWrapper.Key) -> CoreGraphics.CGFloat?
+  public func double(forKey key: checkid.KeychainWrapper.Key) -> Swift.Double?
+  public func string(forKey key: checkid.KeychainWrapper.Key) -> Swift.String?
+}
+extension checkid.KeychainWrapper {
+  public struct Key : Swift.Hashable, Swift.RawRepresentable, Swift.ExpressibleByStringLiteral {
+    public var rawValue: Swift.String
+    public init(rawValue: Swift.String)
+    public init(stringLiteral value: Swift.String)
+    public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+    public typealias RawValue = Swift.String
+    public typealias StringLiteralType = Swift.String
+    public typealias UnicodeScalarLiteralType = Swift.String
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public enum DataGroupId : Swift.Int, Swift.CaseIterable {
+  case COM
+  case DG1
+  case DG2
+  case DG3
+  case DG4
+  case DG5
+  case DG6
+  case DG7
+  case DG8
+  case DG9
+  case DG10
+  case DG11
+  case DG12
+  case DG13
+  case DG14
+  case DG15
+  case DG16
+  case SOD
+  case Unknown
+  public func getName() -> Swift.String
+  public static func getIDFromName(name: Swift.String) -> checkid.DataGroupId
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [checkid.DataGroupId]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [checkid.DataGroupId] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum LogLevel : Swift.Int, Swift.CaseIterable {
+  case verbose
+  case debug
+  case info
+  case warning
+  case error
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [checkid.LogLevel]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [checkid.LogLevel] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class Log {
+  public static var logLevel: checkid.LogLevel
+  public static var storeLogs: Swift.Bool
+  public static var logData: [Swift.String]
+  public class func verbose(_ msg: @autoclosure () -> Swift.String)
+  public class func debug(_ msg: @autoclosure () -> Swift.String)
+  public class func info(_ msg: @autoclosure () -> Swift.String)
+  public class func warning(_ msg: @autoclosure () -> Swift.String)
+  public class func error(_ msg: @autoclosure () -> Swift.String)
+  public class func clearStoredLogs()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class ChipAuthenticationInfo : checkid.SecurityInfo {
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getKeyId() -> Swift.Int
+  public static func toKeyAgreementAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toCipherAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toKeyLength(oid: Swift.String) throws -> Swift.Int
+  @objc deinit
+}
+extension checkid.PKCS7_ {
+  public var signatures: [checkid.SignatureInfo]? {
+    get
+  }
+}
+public class SignatureInfo {
+  final public let version: checkid.ASN1Object?
+  final public let signerIdentifier: checkid.ASN1Object?
+  final public let digestAlgorithmIdentifier: checkid.ASN1Object?
+  final public let signedAttributes: checkid.ASN1Object?
+  final public let signatureAlgorithm: checkid.ASN1Object?
+  final public let signature: checkid.ASN1Object?
+  public var signatureData: Foundation.Data? {
+    get
+  }
+  public var disgestAlgorithmName: Swift.String? {
+    get
+  }
+  public var digestAlgorithmOID: checkid.OID? {
+    get
+  }
+  public var signatureAlgorithmName: Swift.String? {
+    get
+  }
+  public var signatureAlgorithmOID: checkid.OID? {
+    get
+  }
+  public init(asn1: checkid.ASN1Object)
+  @objc deinit
+}
+public enum KeychainItemAccessibility {
+  @available(iOS 4, *)
+  case afterFirstUnlock
+  @available(iOS 4, *)
+  case afterFirstUnlockThisDeviceOnly
+  @available(iOS 4, *)
+  case always
+  @available(iOS 8, *)
+  case whenPasscodeSetThisDeviceOnly
+  @available(iOS 4, *)
+  case alwaysThisDeviceOnly
+  @available(iOS 4, *)
+  case whenUnlocked
+  @available(iOS 4, *)
+  case whenUnlockedThisDeviceOnly
+  public static func == (a: checkid.KeychainItemAccessibility, b: checkid.KeychainItemAccessibility) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum FaceException : Swift.Error {
+  case FACE_NETWORK_ERROR
+  case NO_NFC_SCANNED
+  case NOT_VALID_MRZ_AND_NFC_PROCESS
+  case FACE_CHECK_FAILED
+  case LIVENESS_FAILED
+  case FACE_CHECK_AND_LIVENESS_FAILED
+  case DEVICE_NOT_CONNECTED_TO_THE_INTERNET
+  public static func == (a: checkid.FaceException, b: checkid.FaceException) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class X509Extension {
+  public var oid: Swift.String? {
+    get
+  }
+  public var name: Swift.String? {
+    get
+  }
+  public var isCritical: Swift.Bool {
+    get
+  }
+  public var value: Any? {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ASN1Identifier : Swift.CustomStringConvertible {
+  public enum Class : Swift.UInt8 {
+    case universal
+    case application
+    case contextSpecific
+    case `private`
+    public init?(rawValue: Swift.UInt8)
+    public typealias RawValue = Swift.UInt8
+    public var rawValue: Swift.UInt8 {
+      get
+    }
+  }
+  public enum TagNumber : Swift.UInt8 {
+    case endOfContent
+    case boolean
+    case integer
+    case bitString
+    case octetString
+    case null
+    case objectIdentifier
+    case objectDescriptor
+    case external
+    case read
+    case enumerated
+    case embeddedPdv
+    case utf8String
+    case relativeOid
+    case sequence
+    case set
+    case numericString
+    case printableString
+    case t61String
+    case videotexString
+    case ia5String
+    case utcTime
+    case generalizedTime
+    case graphicString
+    case visibleString
+    case generalString
+    case universalString
+    case characterString
+    case bmpString
+    public init?(rawValue: Swift.UInt8)
+    public typealias RawValue = Swift.UInt8
+    public var rawValue: Swift.UInt8 {
+      get
+    }
+  }
+  public static let constructedTag: Swift.UInt8
+  public func typeClass() -> checkid.ASN1Identifier.Class
+  public func isPrimitive() -> Swift.Bool
+  public func isConstructed() -> Swift.Bool
+  public func tagNumber() -> checkid.ASN1Identifier.TagNumber
+  public var description: Swift.String {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class ChipAuthenticationPublicKeyInfo : checkid.SecurityInfo {
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getKeyId() -> Swift.Int
+  @objc deinit
+}
+public enum FaceMethod : Swift.String {
+  case LIVENESS
+  case KYC
+  case VERIFY
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class AlertShow {
+  public static let shared: checkid.AlertShow
+  public var windowsTemp: [UIKit.UIWindow]
+  public func showAddWidget(completionBlock: ((Swift.String, Swift.String, Swift.String) -> Swift.Void)?)
+  public static func startScan(completionBlock: @escaping (Swift.String, Swift.String, Swift.String) -> Swift.Void)
+  public func show(title: Swift.String, message: Swift.String, completion: (() -> Swift.Void)? = nil)
+  public func showError(message: Swift.String, completion: (() -> Swift.Void)? = nil)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup12 : checkid.DataGroup {
+  public var issuingAuthority: Swift.String? {
+    get
+  }
+  public var dateOfIssue: Swift.String? {
+    get
+  }
+  public var otherPersonsDetails: Swift.String? {
+    get
+  }
+  public var endorsementsOrObservations: Swift.String? {
+    get
+  }
+  public var taxOrExitRequirements: Swift.String? {
+    get
+  }
+  public var frontImage: [Swift.UInt8]? {
+    get
+  }
+  public var rearImage: [Swift.UInt8]? {
+    get
+  }
+  public var personalizationTime: Swift.String? {
+    get
+  }
+  public var personalizationDeviceSerialNr: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+public class QKMRZParser {
+  public init(ocrCorrection: Swift.Bool = false)
+  public func parse(mrzLines: [Swift.String]) -> checkid.QKMRZResult?
+  public func parse(mrzString: Swift.String) -> checkid.QKMRZResult?
+  @objc deinit
+}
+public struct FaceScanInfo {
+  public var nfcInfo: checkid.NFCInfo
+  public var jwt: Swift.String
+  public var videoEvident: Swift.String
+}
+public struct FaceAuthInfo {
+  public var transaction_id: Swift.String
+  public var match_result: Swift.Bool
+  public var liveness: Swift.Bool
+  public var jwt: Swift.String
+  public var videoEvident: Swift.String
+}
+public struct FaceLivenessInfo {
+  public var faceImageString: Swift.String
+  public var videoEvident: Swift.String
+}
+@objc @_inheritsConvenienceInitializers public class API : ObjectiveC.NSObject {
+  public static func passiveAuthentication(baseURL: Swift.String, username: Swift.String, xApiKey: Swift.String, accessKeyId: Swift.String, secretSigningKey: Swift.String, region: Swift.String, services: Swift.String, sessionKeyData: Swift.String, pa_data: Swift.String, mobile_no: Swift.String, email: Swift.String, onCompletion: @escaping (_ resultData: [Swift.String : Any]?, _ isSuccess: Swift.Bool) -> ())
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum SecureMessagingSupportedAlgorithms {
+  case DES
+  case AES
+  public static func == (a: checkid.SecureMessagingSupportedAlgorithms, b: checkid.SecureMessagingSupportedAlgorithms) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 13, *)
+public class SecureMessaging {
+  public init(encryptionAlgorithm: checkid.SecureMessagingSupportedAlgorithms = .DES, ksenc: [Swift.UInt8], ksmac: [Swift.UInt8], ssc: [Swift.UInt8])
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public enum DocTypeEnum : Swift.String {
+  case TD1
+  case TD2
+  case OTHER
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup1 : checkid.DataGroup {
+  public var elements: [Swift.String : Swift.String] {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ASN1DERDecoder {
+  public static func decode(data: Foundation.Data) throws -> [checkid.ASN1Object]
+  public static func decodeOid(contentData: inout Foundation.Data) -> Swift.String?
+  @objc deinit
+}
+extension Foundation.Data {
+  public var sequenceContent: Foundation.Data {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class MrzObject {
+  public static let shared: checkid.MrzObject
+  public var docNo: Swift.String?
+  public var dob: Swift.String?
+  public var doe: Swift.String?
+  public func setData(pID: Swift.String, pDob: Swift.String, pDoe: Swift.String)
+  @objc deinit
+}
+public enum OID : Swift.String {
+  case etsiQcsCompliance
+  case etsiQcsRetentionPeriod
+  case etsiQcsQcSSCD
+  case dsa
+  case ecPublicKey
+  case prime256v1
+  case ecdsaWithSHA256
+  case ecdsaWithSHA512
+  case rsaEncryption
+  case sha256WithRSAEncryption
+  case md5WithRSAEncryption
+  case sha1WithRSAEncryption
+  case sha1
+  case pkcsSha256
+  case sha2Family
+  case sha3_244
+  case sha3_256
+  case sha3_384
+  case md5
+  case pkcs7data
+  case pkcs7signedData
+  case pkcs7envelopedData
+  case emailAddress
+  case signingCertificateV2
+  case contentType
+  case messageDigest
+  case signingTime
+  case certificateExtension
+  case jurisdictionOfIncorporationSP
+  case jurisdictionOfIncorporationC
+  case authorityInfoAccess
+  case qcStatements
+  case cps
+  case unotice
+  case serverAuth
+  case clientAuth
+  case ocsp
+  case caIssuers
+  case dateOfBirth
+  case sha256
+  case VeriSignEVpolicy
+  case extendedValidation
+  case organizationValidated
+  case subjectKeyIdentifier
+  case keyUsage
+  case subjectAltName
+  case issuerAltName
+  case basicConstraints
+  case cRLDistributionPoints
+  case certificatePolicies
+  case authorityKeyIdentifier
+  case extKeyUsage
+  case subjectDirectoryAttributes
+  case organizationName
+  case organizationalUnitName
+  case businessCategory
+  case postalCode
+  case commonName
+  case surname
+  case givenName
+  case dnQualifier
+  case serialNumber
+  case countryName
+  case localityName
+  case stateOrProvinceName
+  case streetAddress
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup14 : checkid.DataGroup {
+  public var securityInfos: [checkid.SecurityInfo] {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class CardAccess {
+  public var securityInfos: [checkid.SecurityInfo] {
+    get
+  }
+  @objc deinit
+}
+extension checkid.X509Certificate {
+  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class BasicConstraintExtension : checkid.X509Extension {
+    public var isCA: Swift.Bool {
+      get
+    }
+    public var pathLenConstraint: Swift.UInt64? {
+      get
+    }
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SubjectKeyIdentifierExtension : checkid.X509Extension {
+    override public var value: Any? {
+      get
+    }
+    @objc deinit
+  }
+  public struct AuthorityInfoAccess {
+    public let method: Swift.String
+    public let location: Swift.String
+  }
+  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class AuthorityInfoAccessExtension : checkid.X509Extension {
+    public var infoAccess: [checkid.X509Certificate.AuthorityInfoAccess]? {
+      get
+    }
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class AuthorityKeyIdentifierExtension : checkid.X509Extension {
+    public var keyIdentifier: Foundation.Data? {
+      get
+    }
+    public var certificateIssuer: [Swift.String]? {
+      get
+    }
+    public var serialNumber: Foundation.Data? {
+      get
+    }
+    @objc deinit
+  }
+  public struct CertificatePolicyQualifier {
+    public let oid: Swift.String
+    public let value: Swift.String?
+  }
+  public struct CertificatePolicy {
+    public let oid: Swift.String
+    public let qualifiers: [checkid.X509Certificate.CertificatePolicyQualifier]?
+  }
+  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CertificatePoliciesExtension : checkid.X509Extension {
+    public var policies: [checkid.X509Certificate.CertificatePolicy]? {
+      get
+    }
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CRLDistributionPointsExtension : checkid.X509Extension {
+    public var crls: [Swift.String]? {
+      get
+    }
+    @objc deinit
+  }
+}
+public protocol CheckIDScanMRZViewDelegate : AnyObject {
+  func checkIDMrzScannerView(_ mrzScannerView: checkid.CheckIDScanMRZView, didFinnish scanResult: Swift.Result<Swift.String, checkid.ScanError>)
+  func checkIDMrzScannerView(_ mrzScannerView: checkid.CheckIDScanMRZView, didHandleScanImage image: Swift.String)
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class CheckIDScanMRZView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var isScanning: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public var vibrateOnResult: Swift.Bool
+  @_Concurrency.MainActor(unsafe) weak public var delegate: checkid.CheckIDScanMRZViewDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+  @objc override dynamic public func prepareForInterfaceBuilder()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) public func startScanning()
+  @_Concurrency.MainActor(unsafe) public func stopScanning()
+}
+extension checkid.CheckIDScanMRZView : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+}
+@_hasMissingDesignatedInitializers public class ASN1Object : Swift.CustomStringConvertible {
+  public var rawValue: Foundation.Data?
+  public var value: Any?
+  public var identifier: checkid.ASN1Identifier?
+  public var arr_output: [Any]
+  public func sub(_ index: Swift.Int) -> checkid.ASN1Object?
+  public func subCount() -> Swift.Int
+  public func findOid(_ oid: checkid.OID) -> checkid.ASN1Object?
+  public func findOid(_ oid: Swift.String) -> checkid.ASN1Object?
+  public var description: Swift.String {
+    get
+  }
+  public var asString: Swift.String? {
+    get
+  }
+  public func printAsn1(insets: Swift.String = "") -> Swift.String
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public enum CertificateTypee {
+  case documentSigningCertificate
+  case issuerSigningCertificate
+  public static func == (a: checkid.CertificateTypee, b: checkid.CertificateTypee) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public enum CertificateItem : Swift.String {
+  case fingerprint
+  case issuerName
+  case subjectName
+  case serialNumber
+  case signatureAlgorithm
+  case publicKeyAlgorithm
+  case notBefore
+  case notAfter
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CertificateItem2 : Swift.String {
+  case issuerName
+  case subjectName
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public class X509Wrapper {
+  final public let cert: Swift.OpaquePointer
+  public init?(with cert: Swift.OpaquePointer?)
+  public func getItemsAsDict() -> [checkid.CertificateItem : Swift.String]
+  public func certToPEM() -> Swift.String
+  public func getFingerprint() -> Swift.String?
+  public func getNotBeforeDate() -> Swift.String?
+  public func getNotAfterDate() -> Swift.String?
+  public func getSerialNumber() -> Swift.String?
+  public func getSignatureAlgorithm() -> Swift.String?
+  public func getPublicKeyAlgorithm() -> Swift.String?
+  public func getIssuerName() -> Swift.String?
+  public func getSubjectName() -> Swift.String?
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public class ASN1Item : Swift.CustomDebugStringConvertible {
+  public init(line: Swift.String)
+  public func getChild(_ child: Swift.Int) -> checkid.ASN1Item?
+  public func getNumberOfChildren() -> Swift.Int
+  public var debugDescription: Swift.String {
+    get
+  }
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public class SimpleASN1DumpParser {
+  public init()
+  public func parse(data: Foundation.Data) throws -> checkid.ASN1Item
+  public func test()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup2 : checkid.DataGroup {
+  public var nrImages: Swift.Int {
+    get
+  }
+  public var versionNumber: Swift.Int {
+    get
+  }
+  public var lengthOfRecord: Swift.Int {
+    get
+  }
+  public var numberOfFacialImages: Swift.Int {
+    get
+  }
+  public var facialRecordDataLength: Swift.Int {
+    get
+  }
+  public var nrFeaturePoints: Swift.Int {
+    get
+  }
+  public var gender: Swift.Int {
+    get
+  }
+  public var eyeColor: Swift.Int {
+    get
+  }
+  public var hairColor: Swift.Int {
+    get
+  }
+  public var featureMask: Swift.Int {
+    get
+  }
+  public var expression: Swift.Int {
+    get
+  }
+  public var poseAngle: Swift.Int {
+    get
+  }
+  public var poseAngleUncertainty: Swift.Int {
+    get
+  }
+  public var faceImageType: Swift.Int {
+    get
+  }
+  public var imageDataType: Swift.Int {
+    get
+  }
+  public var imageWidth: Swift.Int {
+    get
+  }
+  public var imageHeight: Swift.Int {
+    get
+  }
+  public var imageColorSpace: Swift.Int {
+    get
+  }
+  public var sourceType: Swift.Int {
+    get
+  }
+  public var deviceType: Swift.Int {
+    get
+  }
+  public var quality: Swift.Int {
+    get
+  }
+  public var imageData: [Swift.UInt8] {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ICAOConfiguration {
+  public static let shared: checkid.ICAOConfiguration
+  public var tittleScanViewController: Swift.String?
+  public var tittleScanFaceViewController: Swift.String?
+  public var tradeMarkLogo: UIKit.UIImage?
+  public var hideTradeMarkLogo: Swift.Bool?
+  public var tradeMarkLogoTintColor: UIKit.UIColor?
+  public var backgroundColor: UIKit.UIColor?
+  public var titleColor: UIKit.UIColor?
+  public var leftItemTintColor: UIKit.UIColor?
+  public var leftInfoFont: UIKit.UIFont?
+  public var rightInfoFont: UIKit.UIFont?
+  public var textColor: UIKit.UIColor?
+  public var statusBarBackgroundColor: UIKit.UIColor?
+  public var scanMrzBorderColor: UIKit.UIColor?
+  public var scanMrzCornerRadius: CoreGraphics.CGFloat?
+  public var buttonTitleEnableColor: UIKit.UIColor?
+  public var buttonTitleDisableColor: UIKit.UIColor?
+  public var placeHolderTextColor: UIKit.UIColor?
+  public var tfTitleColor: UIKit.UIColor?
+  public var navFont: UIKit.UIFont?
+  public var navTextColor: UIKit.UIColor?
+  public var videoEvidentURL: Swift.String?
+  public var videoUUID: Swift.String?
+  public var progressTintColor: UIKit.UIColor?
+  public var progressTrackColor: UIKit.UIColor?
+  public var isEnroll: Swift.Bool?
+  public var isAuditISO: Swift.Bool?
+  public func setProgressColor(color: UIKit.UIColor)
+  public func setProgressTrackTintColor(color: UIKit.UIColor)
+  public func setPlaceHolderTextColor(color: UIKit.UIColor)
+  public func setTfTitleColor(color: UIKit.UIColor)
+  public func setTittleScanViewController(string: Swift.String)
+  public func setTittleScanFaceViewController(string: Swift.String)
+  public func setTradeMarkLogo(logo: UIKit.UIImage)
+  public func setHideTradeMarkLogo(isHide: Swift.Bool)
+  public func setTradeMarkLogoTintColor(color: UIKit.UIColor)
+  public func setNavigationBarBackgroundColor(color: UIKit.UIColor)
+  public func setNavigationBarTitleColor(color: UIKit.UIColor)
+  public func setNavigationBarLeftItemsTintColor(color: UIKit.UIColor)
+  public func setLeftInfoFont(fontName: Swift.String, size: CoreGraphics.CGFloat)
+  public func setRightInfoFont(fontName: Swift.String, size: CoreGraphics.CGFloat)
+  public func setTextColor(color: UIKit.UIColor)
+  public func setStatusBarBackgroundColor(color: UIKit.UIColor)
+  public var tittleInputViewController: Swift.String?
+  public func setTittleInputViewController(string: Swift.String)
+  public func setScanMrzBorderColor(color: UIKit.UIColor)
+  public func setScanMrzCornerRadius(value: CoreGraphics.CGFloat)
+  public func setButtonTitleEnableColor(color: UIKit.UIColor)
+  public func setButtonTitleDisableColor(color: UIKit.UIColor)
+  public func setNavTitleAttribute(textColor: UIKit.UIColor, font: UIKit.UIFont)
+  public func setIsEnroll(enroll: Swift.Bool)
+  public func setAuditISO(audit: Swift.Bool)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class NotImplementedDG : checkid.DataGroup {
+  @objc deinit
+}
+public protocol CheckIDScanFaceViewDelegate : AnyObject {
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didBlinkEye status: Swift.Bool)
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didCenterFace status: Swift.Bool)
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didCenterNose status: Swift.Bool)
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didHandleError error: checkid.FaceError)
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didFinish status: Swift.Bool)
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didHandleDetectionType type: checkid.DetectionType)
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didHandleLivenessOk object: checkid.FaceForLivenessCustomResult)
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didHandleLivenessFailure object: checkid.FaceForLivenessCustomResult)
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didHandleScanFaceForResult object: checkid.FaceForCustomResultSuccess)
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didMoveFaceCloser isCloser: Swift.Bool)
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didHoldFaceSteady isHoldSteady: Swift.Bool)
+  func checkIDScanFaceView(_ checkIDScanFaceView: checkid.CheckIDScanFaceView, didHadMoreOneFace isMoreOneFace: Swift.Bool)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(CheckIDScanFace) @_Concurrency.MainActor(unsafe) public class CheckIDScanFaceView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) weak public var delegate: checkid.CheckIDScanFaceViewDelegate?
+  @_Concurrency.MainActor(unsafe) public var card_no: Swift.String
+  @_Concurrency.MainActor(unsafe) public var mobile: Swift.String
+  @_Concurrency.MainActor(unsafe) public var email: Swift.String
+  @_Concurrency.MainActor(unsafe) public var methodType: checkid.FaceMethod?
+  @_Concurrency.MainActor(unsafe) public var borderCornerRadius: CoreGraphics.CGFloat
+  @_Concurrency.MainActor(unsafe) public func finalizeCordinate()
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) public func getChallenge(finished: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public func getCoordinatesOfFaceFrame() -> CoreGraphics.CGRect
+  @_Concurrency.MainActor(unsafe) public func finalizeChallenge(onComplete: @escaping (Swift.Bool) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public func getVideoEvident() -> Swift.String
+  @_Concurrency.MainActor(unsafe) public func startSession()
+  @_Concurrency.MainActor(unsafe) public func stopSession()
+  @_Concurrency.MainActor(unsafe) public func startCountDownFrameTimeOut()
+}
+extension checkid.CheckIDScanFaceView : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup7 : checkid.DataGroup {
+  public var imageData: [Swift.UInt8] {
+    get
+  }
+  @objc deinit
+}
+public enum EntropyStringError : Swift.Error {
+  case tooFewBytes
+  case negativeEntropy
+  case invalidCharCount
+  case charsNotUnique
+  public static func == (a: checkid.EntropyStringError, b: checkid.EntropyStringError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class Entropy {
+  public var charset: checkid.CharSet {
+    get
+  }
+  public init(_ charset: checkid.CharSet)
+  convenience public init()
+  convenience public init(_ chars: Swift.String) throws
+  public static func bits(for numStrings: Swift.Float, risk: Swift.Float) -> Swift.Float
+  public func use(_ charset: checkid.CharSet)
+  public func use(_ chars: Swift.String) throws
+  @available(*, deprecated, message: "use charset.chars instead")
+  public var chars: Swift.String {
+    get
+  }
+  public func smallID() -> Swift.String
+  public func smallID(_ charset: checkid.CharSet) -> Swift.String
+  public func mediumID() -> Swift.String
+  public func mediumID(_ charset: checkid.CharSet) -> Swift.String
+  public func largeID() -> Swift.String
+  public func largeID(_ charset: checkid.CharSet) -> Swift.String
+  public func sessionID() -> Swift.String
+  public func sessionID(_ charset: checkid.CharSet) -> Swift.String
+  public func token() -> Swift.String
+  public func token(_ charset: checkid.CharSet) -> Swift.String
+  public func string(bits: Swift.Float) -> Swift.String
+  public func string(bits: Swift.Float, charset: checkid.CharSet) -> Swift.String
+  public func string(bits: Swift.Float, secRand: inout Swift.Bool) -> Swift.String
+  public func string(bits: Swift.Float, charset: checkid.CharSet, secRand: inout Swift.Bool) -> Swift.String
+  public func string(bits: Swift.Float, using bytes: [Swift.UInt8]) throws -> Swift.String
+  public func string(bits: Swift.Float, charset: checkid.CharSet, using bytes: [Swift.UInt8]) throws -> Swift.String
+  @objc deinit
+}
+public struct NFCInfo {
+  public var mrz: Swift.String
+  public var faceImage: UIKit.UIImage
+  public var full_name: Swift.String
+  public var gender: Swift.String
+  public var nationality: Swift.String
+  public var dob: Swift.String
+  public var ethnic: Swift.String
+  public var religion: Swift.String
+  public var place_of_origin: Swift.String
+  public var place_of_residence: Swift.String
+  public var personal_identification: Swift.String
+  public var parent_names: [Swift.String]
+  public var fullname_of_spouse: Swift.String
+  public var personal_number: Swift.String
+  public var ex_value: Swift.String
+  public var doi: Swift.String
+  public var doe: Swift.String
+  public var address: Swift.String
+  public var faceImageBase64: Swift.String
+  public var country: Swift.String
+}
+@_hasMissingDesignatedInitializers public class ASN1DEREncoder {
+  public static func encodeSequence(content: Foundation.Data) -> Foundation.Data
+  @objc deinit
+}
+extension Foundation.Data {
+  public var derEncodedSequence: Foundation.Data {
+    get
+  }
+}
+public enum LicenseError : Swift.Error {
+  case LICENSE_NOT_FOUND
+  case LICENSE_EXPIRED
+  case LICENSE_NOT_VALID
+  case INVALID_BUNDLE_ID
+  case NFC_FUNCTION_IS_NOT_ENABLED
+  case FACE_SCAN_FUNCTION_IS_NOT_ENABLED
+  case NFC_ADAPTER_NOT_SUPPORTED
+  public static func == (a: checkid.LicenseError, b: checkid.LicenseError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class ICAOManager {
+  public static let shared: checkid.ICAOManager
+  public var baseUrlString: Swift.String?
+  public var accessKeyString: Swift.String?
+  public var secretKeyString: Swift.String?
+  public var xApiKeyString: Swift.String?
+  public var regionString: Swift.String?
+  public var serviceNameString: Swift.String?
+  public var usernameString: Swift.String?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class X509Certificate : Swift.CustomStringConvertible {
+  convenience public init(data: Foundation.Data) throws
+  public init(der: Foundation.Data) throws
+  convenience public init(pem: Foundation.Data) throws
+  public var description: Swift.String {
+    get
+  }
+  public func checkValidity(_ date: Foundation.Date = Date()) -> Swift.Bool
+  public var version: Swift.Int? {
+    get
+  }
+  public var serialNumber: Foundation.Data? {
+    get
+  }
+  public var issuerDistinguishedName: Swift.String? {
+    get
+  }
+  public var issuerOIDs: [Swift.String] {
+    get
+  }
+  public func issuer(oid: Swift.String) -> Swift.String?
+  public func issuer(dn: checkid.ASN1DistinguishedNames) -> Swift.String?
+  public var subjectDistinguishedName: Swift.String? {
+    get
+  }
+  public var subjectOIDs: [Swift.String] {
+    get
+  }
+  public func subject(oid: Swift.String) -> Swift.String?
+  public func subject(dn: checkid.ASN1DistinguishedNames) -> Swift.String?
+  public var notBefore: Foundation.Date? {
+    get
+  }
+  public var notAfter: Foundation.Date? {
+    get
+  }
+  public var signature: Foundation.Data? {
+    get
+  }
+  public var sigAlgName: Swift.String? {
+    get
+  }
+  public var sigAlgOID: Swift.String? {
+    get
+  }
+  public var sigAlgParams: Foundation.Data? {
+    get
+  }
+  public var keyUsage: [Swift.Bool] {
+    get
+  }
+  public var extendedKeyUsage: [Swift.String] {
+    get
+  }
+  public var subjectAlternativeNames: [Swift.String] {
+    get
+  }
+  public var issuerAlternativeNames: [Swift.String] {
+    get
+  }
+  public var publicKey: checkid.X509PublicKey? {
+    get
+  }
+  public var criticalExtensionOIDs: [Swift.String] {
+    get
+  }
+  public var nonCriticalExtensionOIDs: [Swift.String] {
+    get
+  }
+  public func extensionObject(oid: checkid.OID) -> checkid.X509Extension?
+  public func extensionObject(oid: Swift.String) -> checkid.X509Extension?
+  public static func decodeToDER(pem pemData: Foundation.Data) -> Foundation.Data?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup11 : checkid.DataGroup {
+  public var fullName: Swift.String? {
+    get
+  }
+  public var personalNumber: Swift.String? {
+    get
+  }
+  public var dateOfBirth: Swift.String? {
+    get
+  }
+  public var placeOfBirth: Swift.String? {
+    get
+  }
+  public var address: Swift.String? {
+    get
+  }
+  public var telephone: Swift.String? {
+    get
+  }
+  public var profession: Swift.String? {
+    get
+  }
+  public var title: Swift.String? {
+    get
+  }
+  public var personalSummary: Swift.String? {
+    get
+  }
+  public var proofOfCitizenship: Swift.String? {
+    get
+  }
+  public var tdNumbers: Swift.String? {
+    get
+  }
+  public var custodyInfo: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+public func binToHexRep(_ val: [Swift.UInt8], asArray: Swift.Bool = false) -> Swift.String
+public func binToHexRep(_ val: Swift.UInt8) -> Swift.String
+public func binToHex(_ val: Swift.UInt8) -> Swift.Int
+public func binToHex(_ val: [Swift.UInt8]) -> Swift.UInt64
+public func binToHex(_ val: Swift.ArraySlice<Swift.UInt8>) -> Swift.UInt64
+public func hexToBin(_ val: Swift.UInt64) -> [Swift.UInt8]
+public func binToInt(_ val: Swift.ArraySlice<Swift.UInt8>) -> Swift.Int
+public func binToInt(_ val: [Swift.UInt8]) -> Swift.Int
+public func intToBin(_ data: Swift.Int, pad: Swift.Int = 2) -> [Swift.UInt8]
+public func hexRepToBin(_ val: Swift.String) -> [Swift.UInt8]
+public func xor(_ kifd: [Swift.UInt8], _ response_kicc: [Swift.UInt8]) -> [Swift.UInt8]
+public func generateRandomUInt8Array(_ size: Swift.Int) -> [Swift.UInt8]
+public func pad(_ toPad: [Swift.UInt8], blockSize: Swift.Int) -> [Swift.UInt8]
+public func unpad(_ tounpad: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func mac(algoName: checkid.SecureMessagingSupportedAlgorithms, key: [Swift.UInt8], msg: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func desMAC(key: [Swift.UInt8], msg: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func aesMAC(key: [Swift.UInt8], msg: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func wrapDO(b: Swift.UInt8, arr: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func unwrapDO(tag: Swift.UInt8, wrappedData: [Swift.UInt8]) throws -> [Swift.UInt8]
+public func intToBytes(val: Swift.Int, removePadding: Swift.Bool) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func oidToBytes(oid: Swift.String, replaceTag: Swift.Bool) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func asn1Length(_ data: Swift.ArraySlice<Swift.UInt8>) throws -> (Swift.Int, Swift.Int)
+@available(iOS 13, macOS 10.15, *)
+public func asn1Length(_ data: [Swift.UInt8]) throws -> (Swift.Int, Swift.Int)
+@available(iOS 13, macOS 10.15, *)
+public func toAsn1Length(_ data: Swift.Int) throws -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcHash(data: [Swift.UInt8], hashAlgorithm: Swift.String) throws -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA1Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA224Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA256Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA512Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA384Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+open class KeychainWrapper {
+  @available(*, deprecated, message: "KeychainWrapper.defaultKeychainWrapper is deprecated since version 2.2.1, use KeychainWrapper.standard instead")
+  public static let defaultKeychainWrapper: checkid.KeychainWrapper
+  public static let standard: checkid.KeychainWrapper
+  public var serviceName: Swift.String {
+    get
+  }
+  public var accessGroup: Swift.String? {
+    get
+  }
+  public init(serviceName: Swift.String, accessGroup: Swift.String? = nil)
+  open func hasValue(forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  open func accessibilityOfKey(_ key: Swift.String) -> checkid.KeychainItemAccessibility?
+  open func allKeys() -> Swift.Set<Swift.String>
+  open func integer(forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Int?
+  open func float(forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Float?
+  open func double(forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Double?
+  open func bool(forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool?
+  open func string(forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.String?
+  open func object(forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.NSCoding?
+  open func data(forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.Data?
+  open func dataRef(forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.Data?
+  @discardableResult
+  open func set(_ value: Swift.Int, forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Float, forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Double, forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Bool, forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.String, forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Foundation.NSCoding, forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Foundation.Data, forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @available(*, deprecated, message: "remove is deprecated since version 2.2.1, use removeObject instead")
+  @discardableResult
+  open func remove(key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func removeObject(forKey key: Swift.String, withAccessibility accessibility: checkid.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func removeAllKeys() -> Swift.Bool
+  open class func wipeKeychain()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup {
+  public var datagroupType: checkid.DataGroupId
+  public var body: [Swift.UInt8] {
+    get
+  }
+  public var data: [Swift.UInt8] {
+    get
+  }
+  public func hash(_ hashAlgorythm: Swift.String) -> [Swift.UInt8]
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup15 : checkid.DataGroup {
+  public var rsaPublicKey: Swift.OpaquePointer? {
+    get
+  }
+  public var ecdsaPublicKey: Swift.OpaquePointer? {
+    get
+  }
+  @objc deinit
+}
+public struct QKMRZResult {
+  public let documentType: Swift.String
+  public let countryCode: Swift.String
+  public let surnames: Swift.String
+  public let givenNames: Swift.String
+  public let documentNumber: Swift.String
+  public let nationality: Swift.String
+  public let birthDate: Foundation.Date?
+  public let sex: Swift.String?
+  public let expiryDate: Foundation.Date?
+  public let personalNumber: Swift.String
+  public let personalNumber2: Swift.String?
+  public let isDocumentNumberValid: Swift.Bool
+  public let isBirthDateValid: Swift.Bool
+  public let isExpiryDateValid: Swift.Bool
+  public let isPersonalNumberValid: Swift.Bool?
+  public let allCheckDigitsValid: Swift.Bool
+}
+public enum Detector : Swift.String {
+  case onDeviceBarcode
+  case onDeviceFace
+  case onDeviceText
+  case onDeviceImageLabel
+  case onDeviceImageLabelsCustom
+  case onDeviceObjectProminentNoClassifier
+  case onDeviceObjectProminentWithClassifier
+  case onDeviceObjectMultipleNoClassifier
+  case onDeviceObjectMultipleWithClassifier
+  case onDeviceObjectCustomProminentNoClassifier
+  case onDeviceObjectCustomProminentWithClassifier
+  case onDeviceObjectCustomMultipleNoClassifier
+  case onDeviceObjectCustomMultipleWithClassifier
+  case pose
+  case poseAccurate
+  case segmentationSelfie
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class OpenSSLUtils {
+  public static func getOpenSSLError() -> Swift.String
+  @available(iOS 13, macOS 10.15, *)
+  public static func getPublicKeyData(from key: Swift.OpaquePointer) -> [Swift.UInt8]?
+  @available(iOS 13, macOS 10.15, *)
+  public static func decodePublicKeyFromBytes(pubKeyData: [Swift.UInt8], params: Swift.OpaquePointer) -> Swift.OpaquePointer?
+  public static func computeSharedSecret(privateKeyPair: Swift.OpaquePointer, publicKey: Swift.OpaquePointer) -> [Swift.UInt8]
+  @objc deinit
+}
+@available(iOS 13, *)
+public class PACEHandler {
+  public init(cardAccess: checkid.CardAccess, tagReader: checkid.TagReader) throws
+  public func doPACE(mrzKey: Swift.String, completed: @escaping (Swift.Bool) -> ())
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class UIUtilities {
+  public static func addCircle(atPoint point: CoreGraphics.CGPoint, to view: UIKit.UIView, color: UIKit.UIColor, radius: CoreGraphics.CGFloat)
+  public static func addLineSegment(fromPoint: CoreGraphics.CGPoint, toPoint: CoreGraphics.CGPoint, inView: UIKit.UIView, color: UIKit.UIColor, width: CoreGraphics.CGFloat)
+  public static func addRectangle(_ rectangle: CoreGraphics.CGRect, to view: UIKit.UIView, color: UIKit.UIColor)
+  public static func addRectangleNose(_ rectangle: CoreGraphics.CGRect, to view: UIKit.UIView, color: UIKit.UIColor)
+  public static func addShape(withPoints points: [Foundation.NSValue]?, to view: UIKit.UIView, color: UIKit.UIColor)
+  public static func imageOrientation(fromDevicePosition devicePosition: AVFoundation.AVCaptureDevice.Position = .back) -> UIKit.UIImage.Orientation
+  public static func createUIImage(from imageBuffer: CoreVideo.CVImageBuffer, orientation: UIKit.UIImage.Orientation) -> UIKit.UIImage?
+  public static func createImageBuffer(from image: UIKit.UIImage) -> CoreVideo.CVImageBuffer?
+  @objc deinit
+}
+@objc @available(iOS 13, *)
+public class PassportReader : ObjectiveC.NSObject {
+  public var passiveAuthenticationUsesOpenSSL: Swift.Bool
+  public init(logLevel: checkid.LogLevel = .info, masterListURL: Foundation.URL? = nil)
+  public func setMasterListURL(_ masterListURL: Foundation.URL)
+  public func overrideNFCDataAmountToRead(amount: Swift.Int)
+  public func readPassport(mrzKey: Swift.String, tags: [checkid.DataGroupId] = [], skipSecureElements: Swift.Bool = true, customDisplayMessage: ((checkid.NFCViewDisplayMessage) -> Swift.String?)? = nil, completed: @escaping (checkid.NFCPassportModel?, checkid.NFCPassportReaderError?) -> ())
+  @objc deinit
+}
+@available(iOS 13, *)
+extension checkid.PassportReader : CoreNFC.NFCTagReaderSessionDelegate {
+  public func tagReaderSessionDidBecomeActive(_ session: CoreNFC.NFCTagReaderSession)
+  public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didInvalidateWithError error: Swift.Error)
+  public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didDetect tags: [CoreNFC.NFCTag])
+}
+@available(iOS 13, macOS 10.15, *)
+public func AESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func AESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func AESECBEncrypt(key: [Swift.UInt8], message: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func tripleDESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func tripleDESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func DESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func DESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
+@_hasMissingDesignatedInitializers public class ASN1DistinguishedNames {
+  final public let oid: Swift.String
+  final public let representation: Swift.String
+  public static let commonName: checkid.ASN1DistinguishedNames
+  public static let dnQualifier: checkid.ASN1DistinguishedNames
+  public static let serialNumber: checkid.ASN1DistinguishedNames
+  public static let givenName: checkid.ASN1DistinguishedNames
+  public static let surname: checkid.ASN1DistinguishedNames
+  public static let organizationalUnitName: checkid.ASN1DistinguishedNames
+  public static let organizationName: checkid.ASN1DistinguishedNames
+  public static let streetAddress: checkid.ASN1DistinguishedNames
+  public static let localityName: checkid.ASN1DistinguishedNames
+  public static let stateOrProvinceName: checkid.ASN1DistinguishedNames
+  public static let countryName: checkid.ASN1DistinguishedNames
+  public static let email: checkid.ASN1DistinguishedNames
+  @objc deinit
+}
+public enum PassportAuthenticationStatus {
+  case notDone
+  case success
+  case failed
+  public static func == (a: checkid.PassportAuthenticationStatus, b: checkid.PassportAuthenticationStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public class NFCPassportModel {
+  public var documentType: Swift.String {
+    get
+  }
+  public var documentSubType: Swift.String {
+    get
+  }
+  public var personalNumber: Swift.String {
+    get
+  }
+  public var documentNumber: Swift.String {
+    get
+  }
+  public var issuingAuthority: Swift.String {
+    get
+  }
+  public var documentExpiryDate: Swift.String {
+    get
+  }
+  public var dateOfBirth: Swift.String {
+    get
+  }
+  public var gender: Swift.String {
+    get
+  }
+  public var nationality: Swift.String {
+    get
+  }
+  public var lastName: Swift.String {
+    get
+  }
+  public var firstName: Swift.String {
+    get
+  }
+  public var passportMRZ: Swift.String {
+    get
+  }
+  public var placeOfBirth: Swift.String? {
+    get
+  }
+  public var residenceAddress: Swift.String? {
+    get
+  }
+  public var phoneNumber: Swift.String? {
+    get
+  }
+  public var documentSigningCertificate: checkid.X509Wrapper? {
+    get
+  }
+  public var countrySigningCertificate: checkid.X509Wrapper? {
+    get
+  }
+  public var LDSVersion: Swift.String {
+    get
+  }
+  public var dataGroupsPresent: [Swift.String] {
+    get
+  }
+  public var dataGroupsAvailable: [checkid.DataGroupId] {
+    get
+  }
+  public var dataGroupsRead: [checkid.DataGroupId : checkid.DataGroup] {
+    get
+  }
+  public var dataGroupHashes: [checkid.DataGroupId : checkid.DataGroupHash] {
+    get
+  }
+  public var cardAccess: checkid.CardAccess? {
+    get
+  }
+  public var BACStatus: checkid.PassportAuthenticationStatus {
+    get
+  }
+  public var PACEStatus: checkid.PassportAuthenticationStatus {
+    get
+  }
+  public var chipAuthenticationStatus: checkid.PassportAuthenticationStatus {
+    get
+  }
+  public var passportCorrectlySigned: Swift.Bool {
+    get
+  }
+  public var documentSigningCertificateVerified: Swift.Bool {
+    get
+  }
+  public var passportDataNotTampered: Swift.Bool {
+    get
+  }
+  public var activeAuthenticationPassed: Swift.Bool {
+    get
+  }
+  public var activeAuthenticationChallenge: [Swift.UInt8] {
+    get
+  }
+  public var activeAuthenticationSignature: [Swift.UInt8] {
+    get
+  }
+  public var verificationErrors: [Swift.Error] {
+    get
+  }
+  public var isPACESupported: Swift.Bool {
+    get
+  }
+  public var isChipAuthenticationSupported: Swift.Bool {
+    get
+  }
+  public var passportImage: UIKit.UIImage? {
+    get
+  }
+  public var signatureImage: UIKit.UIImage? {
+    get
+  }
+  public var activeAuthenticationSupported: Swift.Bool {
+    get
+  }
+  public init()
+  public init(from dump: [Swift.String : Swift.String])
+  public func addDataGroup(_ id: checkid.DataGroupId, dataGroup: checkid.DataGroup)
+  public func getDataGroup(_ id: checkid.DataGroupId) -> checkid.DataGroup?
+  public func dumpPassportData(selectedDataGroups: [checkid.DataGroupId], includeActiveAuthenticationData: Swift.Bool = false) -> [Swift.String : Swift.String]
+  public func getHashesForDatagroups(hashAlgorythm: Swift.String) -> [checkid.DataGroupId : [Swift.UInt8]]
+  public func verifyPassport(masterListURL: Foundation.URL?, useCMSVerification: Swift.Bool = false)
+  public func verifyActiveAuthentication(challenge: [Swift.UInt8], signature: [Swift.UInt8])
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class MobileIDNFCScan {
+  public static func startScanNFC(pKeyID: Swift.String, pKeyDob: Swift.String, pKeyDoe: Swift.String, baseUrlString: Swift.String, accessKeyString: Swift.String, secretKeyString: Swift.String, xApiKeyString: Swift.String, regionString: Swift.String, serviceNameString: Swift.String, usernameString: Swift.String, publicKey: Swift.String, mobile_no: Swift.String, email: Swift.String, onCompletion: @escaping (Swift.Result<[Swift.String : Any], checkid.NfcScanError>) -> Swift.Void)
+  @objc deinit
+}
+extension checkid.MobileIDNFCResult : Swift.Equatable {}
+extension checkid.MobileIDNFCResult : Swift.Hashable {}
+extension checkid.PACEMappingType : Swift.Equatable {}
+extension checkid.PACEMappingType : Swift.Hashable {}
+extension checkid.DetectionType : Swift.Equatable {}
+extension checkid.DetectionType : Swift.Hashable {}
+extension checkid.ScanError : Swift.Equatable {}
+extension checkid.ScanError : Swift.Hashable {}
+extension checkid.NfcScanError : Swift.Equatable {}
+extension checkid.NfcScanError : Swift.Hashable {}
+extension checkid.FaceError : Swift.Equatable {}
+extension checkid.FaceError : Swift.Hashable {}
+extension checkid.MobileIDScanSuccess : Swift.Equatable {}
+extension checkid.MobileIDScanSuccess : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.DataGroupId : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.DataGroupId : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.DataGroupId : Swift.RawRepresentable {}
+extension checkid.LogLevel : Swift.Equatable {}
+extension checkid.LogLevel : Swift.Hashable {}
+extension checkid.LogLevel : Swift.RawRepresentable {}
+extension checkid.KeychainItemAccessibility : Swift.Equatable {}
+extension checkid.KeychainItemAccessibility : Swift.Hashable {}
+extension checkid.FaceException : Swift.Equatable {}
+extension checkid.FaceException : Swift.Hashable {}
+extension checkid.ASN1Identifier.Class : Swift.Equatable {}
+extension checkid.ASN1Identifier.Class : Swift.Hashable {}
+extension checkid.ASN1Identifier.Class : Swift.RawRepresentable {}
+extension checkid.ASN1Identifier.TagNumber : Swift.Equatable {}
+extension checkid.ASN1Identifier.TagNumber : Swift.Hashable {}
+extension checkid.ASN1Identifier.TagNumber : Swift.RawRepresentable {}
+extension checkid.FaceMethod : Swift.Equatable {}
+extension checkid.FaceMethod : Swift.Hashable {}
+extension checkid.FaceMethod : Swift.RawRepresentable {}
+extension checkid.SecureMessagingSupportedAlgorithms : Swift.Equatable {}
+extension checkid.SecureMessagingSupportedAlgorithms : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.DocTypeEnum : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.DocTypeEnum : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.DocTypeEnum : Swift.RawRepresentable {}
+extension checkid.OID : Swift.Equatable {}
+extension checkid.OID : Swift.Hashable {}
+extension checkid.OID : Swift.RawRepresentable {}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.CertificateTypee : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.CertificateTypee : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.CertificateItem : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.CertificateItem : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension checkid.CertificateItem : Swift.RawRepresentable {}
+extension checkid.CertificateItem2 : Swift.Equatable {}
+extension checkid.CertificateItem2 : Swift.Hashable {}
+extension checkid.CertificateItem2 : Swift.RawRepresentable {}
+extension checkid.EntropyStringError : Swift.Equatable {}
+extension checkid.EntropyStringError : Swift.Hashable {}
+extension checkid.LicenseError : Swift.Equatable {}
+extension checkid.LicenseError : Swift.Hashable {}
+extension checkid.Detector : Swift.Equatable {}
+extension checkid.Detector : Swift.Hashable {}
+extension checkid.Detector : Swift.RawRepresentable {}
+extension checkid.PassportAuthenticationStatus : Swift.Equatable {}
+extension checkid.PassportAuthenticationStatus : Swift.Hashable {}
